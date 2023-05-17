@@ -190,18 +190,18 @@ namespace InfimaGames.LowPolyShooterPack
             {
                 isJump = true;
             }
-            else if(transform.position.y >= 3.0f){
+            else if(transform.position.y >= 2.0f){
                 isJump = false;
             }
 
             if (isJump)
             {
-                rigidBody.AddForce(Vector3.up * 9.0f, ForceMode.Impulse);
+                rigidBody.AddForce(Vector3.up * 35.0f, ForceMode.Impulse);
             }
 
             if (!grounded)
             {
-                rigidBody.AddForce(Vector3.down * 4.0f, ForceMode.Impulse);
+                rigidBody.AddForce(Vector3.down * 15.0f, ForceMode.Impulse);
             }
         }
 
