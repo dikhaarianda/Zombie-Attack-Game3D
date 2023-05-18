@@ -196,12 +196,12 @@ namespace InfimaGames.LowPolyShooterPack
 
             if (isJump)
             {
-                rigidBody.AddForce(Vector3.up * 35.0f, ForceMode.Impulse);
+                rigidBody.AddForce(Vector3.up * 6.0f, ForceMode.Impulse);
             }
 
             if (!grounded)
             {
-                rigidBody.AddForce(Vector3.down * 15.0f, ForceMode.Impulse);
+                rigidBody.AddForce(Vector3.down * 3.0f, ForceMode.Impulse);
             }
         }
 
