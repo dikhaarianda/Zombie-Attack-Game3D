@@ -4,24 +4,32 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] int EnemyHealth;
+    [SerializeField] private int EnemyHealth;
     public bool isHit;
-    public AnimationClip EnemyDeath;
+    private Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void Update()
     {
         if (isHit)
         {
             EnemyHealth--;
-
             if (EnemyHealth == 0)
             {
-                gameObject.GetComponent<Animation>().clip = EnemyDeath;
-                gameObject.GetComponent<Animation>().Play();
-                Debug.Log("test");
-                // Destroy(gameObject);
+                anim.SetTrigger("Death");
+                StartCoroutine(DelayTimer());
             }
             isHit = false;
         }
+    }
+
+    private IEnumerator DelayTimer () {
+		//Wait for random amount of time
+		yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }
