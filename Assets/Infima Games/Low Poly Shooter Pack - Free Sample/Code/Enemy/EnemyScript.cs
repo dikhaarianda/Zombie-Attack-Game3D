@@ -29,7 +29,7 @@ public class EnemyScript : MonoBehaviour
 
     private IEnumerator DelayTimer () {
 		//Wait for random amount of time
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }

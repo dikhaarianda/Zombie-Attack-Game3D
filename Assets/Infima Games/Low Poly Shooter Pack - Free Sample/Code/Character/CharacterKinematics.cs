@@ -85,6 +85,20 @@ namespace InfimaGames.LowPolyShooterPack
         private const float KSqrEpsilon = 1e-8f;
 
         #endregion
+
+        private EnemyMovement playerDamage;
+
+        private void Start() {
+            playerDamage = FindAnyObjectByType<EnemyMovement>();
+        }
+
+        private void Update() {
+            if (playerDamage.PlayerHealth == 0)
+            {
+                Time.timeScale = 0f;
+            }
+            Debug.Log(playerDamage.PlayerHealth);
+        }
         
         #region METHODS
         
