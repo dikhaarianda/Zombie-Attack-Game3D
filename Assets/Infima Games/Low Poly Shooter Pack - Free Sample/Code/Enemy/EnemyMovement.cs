@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+namespace InfimaGames.LowPolyShooterPack
+{
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent agent;
     [SerializeField] private GameObject target;
+    [SerializeField] private int damage;
     private Animator anim;
-    public int PlayerHealth;
-    private float lastAttack = 0;
-    private float cooldownAttack = 2f;
 
     void Start()
     {
@@ -27,9 +27,8 @@ public class EnemyMovement : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             agent.isStopped = true;
-            enemyAttack();
         }
-        else if(dist > 10)
+        else if(dist > 20)
         {
             anim.SetTrigger("Stop");
             agent.isStopped = true;
@@ -38,21 +37,13 @@ public class EnemyMovement : MonoBehaviour
         {
             anim.SetTrigger("Walk");
             agent.isStopped = false;
-            FindTarget();
+            agent.SetDestination(target.transform.position);
         }
     }
 
-    private void FindTarget()
+    public void enemyAttack()
     {
-        agent.SetDestination(target.transform.position);
+        target.GetComponent<Character>().getDamage(damage);
     }
-
-    private void enemyAttack()
-    {
-        if (Time.time - lastAttack >= cooldownAttack)
-        {
-            lastAttack = Time.time;
-            PlayerHealth -= 2;
-        }
-    }
+}
 }
