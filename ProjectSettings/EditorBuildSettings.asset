@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Tampilan depan.unity
+    path: Assets/Scenes/TampilanUtama.unity
     guid: e82e6ec8aec4fdc4f9b7a85903b211e1
   - enabled: 1
     path: Assets/Scenes/Free_City_Scene_I.unity
