@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class SceneLoad : MonoBehaviour
 {
 
@@ -39,8 +38,6 @@ public class SceneLoad : MonoBehaviour
             {
                 loadingSlider.value = 1;
                 operation.allowSceneActivation = true;
-                
-                
             }
 
             yield return null;

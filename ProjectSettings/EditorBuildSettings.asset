@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TampilanUtama.unity
+    guid: e82e6ec8aec4fdc4f9b7a85903b211e1
+  - enabled: 1
+    path: Assets/Scenes/Free_City_Scene_I.unity
+    guid: e78c0c7318bf343459d9a3173eb170ab
+  - enabled: 1
+    path: Assets/Scenes/Mission Complete.unity
+    guid: 128ad44ab99656647a17438ee15043f0
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: f68f69fc439162649b5bff8da638002d
   m_configObjects: {}
