@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -230,7 +231,9 @@ namespace InfimaGames.LowPolyShooterPack
 
 			if (health == 0)
 			{
-				Time.timeScale = 0;
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
+				SceneManager.LoadScene("GameOver");
 			}
 
 			healthUI.text = health.ToString();
