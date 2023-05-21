@@ -44,6 +44,9 @@ namespace InfimaGames.LowPolyShooterPack
 		[SerializeField]
 		private Animator characterAnimator;
 
+		[Header("Player Healt")]
+		[SerializeField] private int health;
+
 		#endregion
 
 		#region FIELDS
@@ -222,6 +225,13 @@ namespace InfimaGames.LowPolyShooterPack
 
 			//Update Animator.
 			UpdateAnimator();
+
+			if (health == 0)
+			{
+				Time.timeScale = 0;
+			}
+
+			Debug.Log(health);
 		}
 
 		protected override void LateUpdate()
@@ -870,6 +880,11 @@ namespace InfimaGames.LowPolyShooterPack
 		}
 
 		#endregion
+
+		public int getDamage(int damage)
+		{
+			return health -= damage;
+		}
 
 		#endregion
 	}

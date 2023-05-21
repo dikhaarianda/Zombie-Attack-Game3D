@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+namespace InfimaGames.LowPolyShooterPack
+{
 public class EnemyMovement : MonoBehaviour
 {
     private NavMeshAgent agent;
     [SerializeField] private GameObject target;
+    [SerializeField] private int damage;
+    [SerializeField] private AudioClip audioWalk;
+    [SerializeField] private AudioClip audioAttack;
+    private AudioSource audioSource;
     private Animator anim;
-    public int PlayerHealth;
-    private float lastAttack = 0;
-    private float cooldownAttack = 2f;
+    private bool isAudioPlay;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,32 +32,29 @@ public class EnemyMovement : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             agent.isStopped = true;
-            enemyAttack();
+            audioSource.clip = audioAttack;
         }
-        else if(dist > 10)
+        else if(dist > 20)
         {
             anim.SetTrigger("Stop");
             agent.isStopped = true;
+            audioSource.clip = null;
         }
         else
         {
             anim.SetTrigger("Walk");
             agent.isStopped = false;
-            FindTarget();
+            agent.SetDestination(target.transform.position);
+            audioSource.clip = audioWalk;
         }
+
+        if (!audioSource.isPlaying) audioSource.Play();
+        if (audioSource.clip == null) audioSource.Pause();
     }
 
-    private void FindTarget()
+    public void enemyAttack()
     {
-        agent.SetDestination(target.transform.position);
+        target.GetComponent<Character>().getDamage(damage);
     }
-
-    private void enemyAttack()
-    {
-        if (Time.time - lastAttack >= cooldownAttack)
-        {
-            lastAttack = Time.time;
-            PlayerHealth -= 2;
-        }
-    }
+}
 }
