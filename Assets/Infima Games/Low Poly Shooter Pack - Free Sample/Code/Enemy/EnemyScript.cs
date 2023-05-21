@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private int EnemyHealth;
     [SerializeField] private AudioClip audioDead;
     private EnemyMovement enemyMovement;
+    private EnemyUI enemyUI;
     private AudioSource audioSource;
     private Animator anim;
     public bool isHit;
@@ -18,6 +19,7 @@ public class EnemyScript : MonoBehaviour
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         enemyMovement = GetComponent<EnemyMovement>();
+        enemyUI = FindAnyObjectByType<EnemyUI>();
     }
 
     void Update()
@@ -29,6 +31,7 @@ public class EnemyScript : MonoBehaviour
             {
                 anim.SetTrigger("Death");
                 enemyMovement.enabled = false;
+                enemyUI.zombieNum--;
                 audioSource.clip = audioDead;
                 audioSource.Play();
                 StartCoroutine(DelayTimer());

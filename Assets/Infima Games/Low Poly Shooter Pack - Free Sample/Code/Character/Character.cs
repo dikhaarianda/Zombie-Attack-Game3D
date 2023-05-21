@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -46,6 +47,7 @@ namespace InfimaGames.LowPolyShooterPack
 
 		[Header("Player Healt")]
 		[SerializeField] private int health;
+		[SerializeField] private Text healthUI;
 
 		#endregion
 
@@ -231,7 +233,7 @@ namespace InfimaGames.LowPolyShooterPack
 				Time.timeScale = 0;
 			}
 
-			Debug.Log(health);
+			healthUI.text = health.ToString();
 		}
 
 		protected override void LateUpdate()
