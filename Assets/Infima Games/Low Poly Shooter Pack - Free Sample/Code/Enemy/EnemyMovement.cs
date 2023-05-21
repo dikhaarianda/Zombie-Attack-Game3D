@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
             agent.isStopped = true;
             audioSource.clip = audioAttack;
         }
-        else if(dist > 20)
+        else if(dist > 30)
         {
             anim.SetTrigger("Stop");
             agent.isStopped = true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -34,6 +35,7 @@ public class EnemyScript : MonoBehaviour
                 enemyUI.zombieNum--;
                 audioSource.clip = audioDead;
                 audioSource.Play();
+                GetComponent<NavMeshAgent>().isStopped = true;
                 StartCoroutine(DelayTimer());
             }
             isHit = false;

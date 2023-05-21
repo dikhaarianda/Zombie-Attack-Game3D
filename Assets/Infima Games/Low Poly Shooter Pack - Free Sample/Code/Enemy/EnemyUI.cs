@@ -16,11 +16,17 @@ public class EnemyUI : MonoBehaviour
     {
         if (zombieNum == 0)
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("MissionComplete");
+            StartCoroutine(DelayTimer());
         }
         zombieUI.text = zombieNum.ToString();
+    }
+
+    private IEnumerator DelayTimer () {
+		//Wait for random amount of time
+		yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("MissionComplete");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
 }
